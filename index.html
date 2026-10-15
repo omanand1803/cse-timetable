@@ -69,7 +69,7 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
 .chip.live{border-color:var(--accent-dim)}
 .chip.live strong{color:var(--accent)}
 
-/* notice board + sample banner */
+/* notice board */
 .notice-board {
   border: 1px solid var(--accent-dim); background: rgba(10, 20, 14, 0.85); backdrop-filter: blur(8px);
   box-shadow: 0 0 20px rgba(45, 255, 122, 0.15); border-left: 4px solid var(--accent); border-radius: 8px;
@@ -80,7 +80,6 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
   color: var(--accent); letter-spacing: 0.12em; margin-bottom: 8px;
 }
 .notice-board p { margin: 0; font-size: 15px; color: var(--fg); font-weight: 500; }
-.sample{border:1px dashed var(--accent-dim);color:var(--mute);border-radius:6px;padding:10px 14px;margin-bottom:18px;font-size:13.5px}
 
 /* controls */
 .controls{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:22px}
@@ -136,9 +135,10 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding-block:26px 120px
 footer b{font-family:var(--f-display);color:var(--accent);letter-spacing:.06em}
 
 /* CR edit bar */
-.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(6,14,9,.96);border-top:1px solid var(--accent-dim);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(6,14,9,.96);border-top:1px solid var(--accent-dim);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
 .bar .st{font-family:var(--f-mono);font-size:12px;color:var(--mute);letter-spacing:.06em}
 .bar .st.dirty{color:var(--warn)}
+.notify-toggle { display: flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 600; cursor: pointer; }
 
 /* modal sheet */
 .scrim{position:fixed;inset:0;background:rgba(0,0,0,.66);z-index:40;display:flex;align-items:flex-end;justify-content:center}
@@ -164,7 +164,6 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none}
 <canvas id="particles"></canvas>
 <div id="root"></div>
 
-<!-- Initial Fallback State -->
 <script type="application/json" id="state">{"sample":false,"notice":"","periods":[{"id":"p1","a":"08:30","b":"09:20"},{"id":"p2","a":"09:30","b":"10:20"},{"id":"p3","a":"10:30","b":"11:20"},{"id":"p4","a":"11:30","b":"12:20"},{"id":"b1","a":"12:20","b":"14:00","brk":"Lunch break"},{"id":"p5","a":"14:00","b":"14:50"},{"id":"p6","a":"15:00","b":"15:50"},{"id":"p7","a":"16:00","b":"16:50"},{"id":"p8","a":"17:00","b":"17:50"}],"days":["Mon","Tue","Wed","Thu","Fri","Sat"],"base":{"Mon":{"p1":{"s":"Electrical Network Analysis","t":"","r":"","k":"A1 \u00b7 EE103"},"p2":{"s":"Introduction to Programming","t":"Prof. Rupa Mehta","r":"","k":"B2 \u00b7 CS103"},"p3":{"s":"English and Professional Communication","t":"","r":"","k":"C3 \u00b7 HS110"},"p4":{"s":"Fundamentals of Engineering Mathematics","t":"","r":"","k":"D4 \u00b7 MA105"},"p5":{"s":"Electrical Network Analysis (Lab)","t":"","r":"","k":"P11 \u00b7 EE103 Lab"},"p6":{"s":"Electrical Network Analysis (Lab)","t":"","r":"","k":"P11 \u00b7 EE103 Lab"},"p7":{"s":"Electrical Network Analysis (Lab)","t":"","r":"","k":"P12 \u00b7 EE103 Lab"},"p8":{"s":"Electrical Network Analysis (Lab)","t":"","r":"","k":"P12 \u00b7 EE103 Lab"}},"Tue":{"p1":{"s":"Introduction to Programming","t":"","r":"","k":"B1 \u00b7 CS103","n":"Slot B1 was blank on the sheet. Confirm the subject."},"p2":{"s":"English and Professional Communication","t":"","r":"","k":"C2 \u00b7 HS110"},"p3":{"s":"Fundamentals of Engineering Mathematics","t":"","r":"","k":"D3 \u00b7 MA105"},"p4":{"s":"Introduction to Computer Science","t":"TA2","r":"","k":"E4 \u00b7 CS101"},"p5":{"s":"Introduction to Programming (Computing Lab 1)","t":"Dr. Keyur Parmar, Dr. Abhilasha Chaudhari, TA4, FIR1","r":"","k":"P13 \u00b7 CS103 Lab"},"p6":{"s":"Introduction to Programming (Computing Lab 1)","t":"Dr. Keyur Parmar, Dr. Abhilasha Chaudhari, TA4, FIR1","r":"","k":"P13 \u00b7 CS103 Lab"},"p7":{"s":"Introduction to Programming (Computing Lab 1)","t":"Dr. Balu Parne, Dr. Naveen Kumar, TA4, FIR1","r":"","k":"P14 \u00b7 CS103 Lab"},"p8":{"s":"Introduction to Programming (Computing Lab 1)","t":"Dr. Balu Parne, Dr. Naveen Kumar, TA4, FIR1","r":"","k":"P14 \u00b7 CS103 Lab"}},"Wed":{"p1":{"s":"English and Professional Communication","t":"","r":"","k":"C1 \u00b7 HS110"},"p2":{"s":"Fundamentals of Engineering Mathematics","t":"","r":"","k":"D2 \u00b7 MA105"},"p3":{"s":"Introduction to Programming","t":"Prof. Rupa Mehta","r":"","k":"E3 \u00b7 CS103"},"p4":{"s":"Electrical Network Analysis","t":"","r":"","k":"A4 \u00b7 EE103"}},"Thu":{"p1":{"s":"Fundamentals of Engineering Mathematics","t":"","r":"","k":"D1 \u00b7 MA105"},"p2":{"s":"Introduction to Programming","t":"TA4","r":"","k":"E2 \u00b7 CS103"},"p3":{"s":"Introduction to Computer Science","t":"TA2","r":"","k":"A3 \u00b7 CS101"}},"Fri":{"p1":{"s":"Introduction to Computer Science (Tutorial)","t":"Dr. Abhinav Malaviya, TA3, FIR3","r":"","k":"E1 \u00b7 CS101 Tutorial"},"p2":{"s":"Electrical Network Analysis","t":"","r":"","k":"A2 \u00b7 EE103"},"p3":{"s":"Introduction to Computer Science","t":"TA3","r":"","k":"B3 \u00b7 CS101"},"p4":{"s":"English and Professional Communication","t":"","r":"","k":"C4 \u00b7 HS110"}},"Sat":{}},"over":{}}</script>
 
 <script type="module">
@@ -190,8 +189,14 @@ var PASS='2508';
 var S=JSON.parse(document.getElementById('state').textContent);
 var DAYNAMES={Mon:'Monday',Tue:'Tuesday',Wed:'Wednesday',Thu:'Thursday',Fri:'Friday',Sat:'Saturday'};
 var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-var ui={view:'cards',week:0,cr:false,scope:'week',dirty:false,sheet:null};
-try{ if(sessionStorage.getItem('cr')==='1'){ui.cr=true;} }catch(e){}
+var ui={view:'cards',week:0,cr:false,scope:'week',dirty:false,sheet:null,lastAlertTime:0};
+
+try{ 
+  if(sessionStorage.getItem('cr')==='1') ui.cr=true; 
+  ui.lastAlertTime = localStorage.getItem('lastAlertTime') || 0;
+}catch(e){}
+
+let initialLoad = true;
 
 // Firebase Realtime Listener
 onValue(stateRef, (snapshot) => {
@@ -199,6 +204,19 @@ onValue(stateRef, (snapshot) => {
   if (data) {
     S = data;
     ui.dirty = false;
+    
+    // Fire push notification if a new alert exists
+    if (S.latestAlert && S.latestAlert.time > ui.lastAlertTime) {
+      if (!initialLoad && 'Notification' in window && Notification.permission === 'granted') {
+        new Notification("CSE (B) Update", { 
+          body: S.latestAlert.msg,
+          icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png" 
+        });
+      }
+      ui.lastAlertTime = S.latestAlert.time;
+      localStorage.setItem('lastAlertTime', ui.lastAlertTime);
+    }
+    initialLoad = false;
     render();
   }
 });
@@ -307,8 +325,12 @@ function render(){
   else if(ni.next) liveChip='<div class="chip"><small>Next</small><strong>'+esc(ni.next.c.s)+'</strong><span>'+fmtT(ni.next.p.a)+(ni.next.c.r?' · '+esc(ni.next.c.r):'')+'</span></div>';
   else if(ui.week===0) liveChip='<div class="chip"><small>Today</small><strong>No more classes</strong></div>';
   var scopeTxt=ui.scope==='regular'?'Regular timetable (every week)':'This week only';
+  
+  var showBell = ('Notification' in window && Notification.permission !== 'granted' && Notification.permission !== 'denied');
+
   var h='<div class="wrap'+(ui.cr?' editing':'')+'">'
   +'<div class="top"><div class="brand"><b>CSE</b> Department · Division B</div><div>'
+  +(showBell ? '<button class="btn sm" id="btn-notif" style="margin-right:8px; border-color:var(--accent); color:var(--accent);">🔔 Enable Alerts</button>' : '')
   +(ui.cr?'<button class="btn" id="lock">Lock CR mode</button>':'<button class="btn" id="login">CR login</button>')+'</div></div>'
   +'<header class="hero"><div class="plane" id="plane"></div><div class="hero-in" id="heroin"><div class="eyebrow">Weekly timetable</div><h1>CSE <span>B</span><br>Class Schedule</h1>'
   +'<p class="sub">One link for the whole class. The schedule below is always the latest version from your CR.</p>'
@@ -326,8 +348,10 @@ function render(){
   if(ui.cr){
     h+='<div class="bar"><div class="seg"><button data-scope="week" aria-pressed="'+(ui.scope==='week')+'">This week only</button><button data-scope="regular" aria-pressed="'+(ui.scope==='regular')+'">Regular timetable</button></div>'
     +'<button class="btn" id="notice">Notice</button>'
+    +'<button class="btn" id="ping" style="color:var(--accent); border-color:var(--accent);">🔔 Ping Class</button>'
     +'<span class="st'+(ui.dirty?' dirty':'')+'">'+(ui.dirty?'Unsaved changes':'All changes published')+'</span>'
-    +'<button class="btn pri" id="pub"'+(ui.dirty?'':' disabled style="opacity:.5"')+'>Publish for everyone</button></div>';
+    +'<label class="notify-toggle"><input type="checkbox" id="notify-check"> Alert on Publish</label>'
+    +'<button class="btn pri" id="pub"'+(ui.dirty?'':' disabled style="opacity:.5"')+'>Publish</button></div>';
   }
   document.getElementById('root').innerHTML=h;
   bindTilt();
@@ -418,30 +442,56 @@ function cancelDay(day){
 function publish(){
   var b=document.getElementById('pub');if(b){b.disabled=true;b.textContent='Publishing…'}
   
-  // Clean up changes older than 28 days
   var cut=iso(addDays(mondayOf(new Date()),-28));
   Object.keys(S.over).forEach(function(k){if(k<cut) delete S.over[k]});
   S.sample=false;
+  
+  var alertClass = document.getElementById('notify-check') && document.getElementById('notify-check').checked;
+  if (alertClass) {
+    S.latestAlert = { 
+      time: Date.now(), 
+      msg: S.notice ? "Notice: " + S.notice : "The class schedule has been updated." 
+    };
+  }
 
   set(stateRef, S).then(() => {
     toast('Published. Everyone sees the new timetable.');
     ui.dirty = false;
     var btn = document.getElementById('pub');
-    if(btn){btn.disabled=false;btn.textContent='Publish for everyone'}
+    if(btn){btn.disabled=false;btn.textContent='Publish'}
     render();
   }).catch((error) => {
     toast('Could not publish. Check your connection.', true);
     var btn = document.getElementById('pub');
-    if(btn){btn.disabled=false;btn.textContent='Publish for everyone'}
+    if(btn){btn.disabled=false;btn.textContent='Publish'}
   });
 }
 
 document.addEventListener('click',function(e){
-  var t=e.target.closest('button,a,[data-pid]');if(!t) return;
+  var t=e.target.closest('button,a,[data-pid],.notify-toggle');if(!t) return;
   if(t.id==='login') return openLogin();
   if(t.id==='lock'){ui.cr=false;try{sessionStorage.removeItem('cr')}catch(x){}return render()}
   if(t.id==='pub') return publish();
   if(t.id==='notice') return openNotice();
+  
+  // Custom Ping Action
+  if(t.id==='ping'){
+    var msg = prompt("Enter the push notification message to send to the class:", "Please check the updated schedule for tomorrow.");
+    if(msg && msg.trim() !== '') {
+      S.latestAlert = { time: Date.now(), msg: msg.trim() };
+      set(stateRef, S).then(() => toast("Notification sent directly to the class!"));
+    }
+    return;
+  }
+
+  if(t.id==='btn-notif') {
+    if('Notification' in window) {
+      Notification.requestPermission().then(permission => {
+        if(permission === 'granted') { t.style.display='none'; toast("Alerts enabled successfully!"); }
+      });
+    }
+    return;
+  }
   if(t.id==='copy'){var tx=shareText();(navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(tx):Promise.reject()).then(function(){toast('Copied. Paste it in your class group.')},function(){toast('Copy is blocked here. Use the WhatsApp button.',true)});return}
   if(t.dataset.week!=null){ui.week=+t.dataset.week;return render()}
   if(t.dataset.view){ui.view=t.dataset.view;return render()}
